@@ -1,0 +1,62 @@
+{
+  "base_path": "/path/to/SemEval",
+
+  "domains": ["clapnq", "ibmcloud", "fiqa", "govt"],
+
+  "corpus_paths": {
+    "clapnq":   "{base}/corpus/clapnq.jsonl",
+    "ibmcloud": "{base}/corpus/cloud.jsonl",
+    "fiqa":     "{base}/corpus/fiqa.jsonl",
+    "govt":     "{base}/corpus/govt.jsonl"
+  },
+
+  "query_paths": {
+    "clapnq":   "{base}/queries/clapnq_rewrite.jsonl",
+    "ibmcloud": "{base}/queries/cloud_rewrite.jsonl",
+    "fiqa":     "{base}/queries/fiqa_rewrite.jsonl",
+    "govt":     "{base}/queries/govt_rewrite.jsonl"
+  },
+
+  "qrels_paths": {
+    "clapnq":   "{base}/qrels/clapnq/dev.tsv",
+    "ibmcloud": "{base}/qrels/cloud/dev.tsv",
+    "fiqa":     "{base}/qrels/fiqa/dev.tsv",
+    "govt":     "{base}/qrels/govt/dev.tsv"
+  },
+
+  "embedding_paths": {
+    "clapnq":   { "bge": "{base}/Embeddings/clapnq_bge_base.pkl",  "e5": "{base}/Embeddings/clapnq_e5_base.pkl"  },
+    "ibmcloud": { "bge": "{base}/Embeddings/cloud_bge_base.pkl",   "e5": "{base}/Embeddings/cloud_e5_base.pkl"   },
+    "fiqa":     { "bge": "{base}/Embeddings/fiqa_bge_base.pkl",    "e5": "{base}/Embeddings/fiqa_e5_base.pkl"    },
+    "govt":     { "bge": "{base}/Embeddings/govt_bge_base.pkl",    "e5": "{base}/Embeddings/govt_e5_base.pkl"    }
+  },
+
+  "retrieval": {
+    "top_retrieval": 150,
+    "top_fusion":    100,
+    "final_top_k":   10,
+    "rrf_k":         60
+  },
+
+  "reranking": {
+    "batch_size": 16,
+    "weights": {
+      "bge_reranker_large": 0.40,
+      "mxbai_rerank_large": 0.35,
+      "ms_marco_minilm":    0.25
+    }
+  },
+
+  "models": {
+    "bge_encoder":        "BAAI/bge-base-en-v1.5",
+    "e5_encoder":         "intfloat/e5-base-v2",
+    "bge_reranker_large": "BAAI/bge-reranker-large",
+    "mxbai_rerank_large": "mixedbread-ai/mxbai-rerank-large-v1",
+    "ms_marco_minilm":    "cross-encoder/ms-marco-MiniLM-L-12-v2"
+  },
+
+  "output": {
+    "results_dir":    "{base}/results",
+    "submission_file": "{base}/final_submission_taskA.jsonl"
+  }
+}
