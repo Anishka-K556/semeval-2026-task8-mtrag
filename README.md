@@ -149,7 +149,7 @@ python Task-A/combine_results.py
 
 ## Reference Paper
 
-System description paper is available in [`paper/`](paper/TechSSN_SemEval2026_Task8.pdf).
+System description paper is available in [here](paper/TechSSN_SemEval2026_Task8.pdf).
 
 ```bibtex
 @inproceedings{techssn-semeval2026-task8,
