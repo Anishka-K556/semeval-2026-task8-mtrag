@@ -136,6 +136,38 @@ python run.py --config path/to/my_config.json
 
 ---
 
+## Key Parameters
+
+| Parameter | Value | Config key |
+|---|---|---|
+| Generation model | google/flan-t5-large | `model_name` |
+| Top-K context passages | 3 | `top_k_context` |
+| Max input tokens | 1024 | `token_limits.max_input_tokens` |
+| Max new tokens | 60 | `token_limits.max_new_tokens` |
+| Beam search width | 3 | `generation.num_beams` |
+| No-repeat n-gram size | 3 | `generation.no_repeat_ngram_size` |
+| Length penalty | 1.0 | `generation.length_penalty` |
+| Early stopping | true | `generation.early_stopping` |
+
+---
+
+## Dev Set Results
+
+Metrics are computed per domain on the dev split. **RB_agg** is the aggregated ROUGE-BERT score, **RL_F** is ROUGE-L F1, and **RB_llm** is the LLM-based ROUGE-BERT variant. Avg. Length is the mean character length of generated answers.
+
+| Domain    | N   | RB_agg | RL_F   | RB_llm | Avg. Length (chars) |
+|-----------|-----|--------|--------|--------|---------------------|
+| IBM Cloud | 131 | 0.2663 | 0.5588 | 0.2905 | 55.8                |
+| FiQA      | 77  | 0.2187 | 0.6645 | 0.2500 | 64.8                |
+| ClapNQ    | 142 | 0.1893 | 0.4437 | 0.2377 | 45.7                |
+| Govt      | 157 | 0.1734 | 0.4554 | 0.1803 | 86.6                |
+
+**Overall:** Harmonic mean of **0.3198** (RL_F = 0.6011), ranking **26th out of 29 teams**.
+
+Analysis from the paper notes that strong factual grounding through anchor prompting contributed to the RL_F score, while lower semantic similarity scores reflect limitations of FLAN-T5-large in capturing nuanced responses. Retrieval noise and over-conservative abstention (excessive "I don't know" responses) were the primary sources of error.
+
+---
+
 ## Output Format
 
 Each line in the output JSONL file contains:
