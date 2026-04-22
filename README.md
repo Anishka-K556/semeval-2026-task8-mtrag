@@ -86,9 +86,12 @@ SemEval-2026-Task8-MTRAG/
 ├── Task-C/
 │   ├── README.md                        <- Task C setup and usage (in progress)
 │   ├── generation/
+│   │   ├── __init__.py
 │   │   └── generate.py                  <- FLAN-T5-Large anchor prompting
 │   ├── postprocessing/
+│   │   ├── __init__.py
 │   │   └── normalize.py                 <- IDK normalization
+│   ├── run.py
 │   └── evaluate.py                      <- RBllm, RBagg, RLF, IDK metrics
 │
 └── paper/
@@ -157,7 +160,7 @@ System description paper is available in [here](paper/TechSSN_SemEval2026_Task8.
                using Ensemble Re-encoders and Anchor Prompting},
   author    = {Anishka K and Anne Jacika J and Guruprakash K and
                Rajalakshmi Sivanaiah and S. Angel Deborah},
-  booktitle = {to be updated},
+  booktitle = {Proceedings of the 20th International Workshop on Semantic Evaluation (SemEval-2026)},
   year      = {2026}
 }
 ```
